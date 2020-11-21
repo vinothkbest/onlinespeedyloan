@@ -1,0 +1,54 @@
+Database name:
+
+
+Use Onlinespeedyloan;
+
+
+<-------------CRM Login------------------>
+
+
+
+
+CREATE Table Admin (ID int AUTO_INCREMENT, 
+                    Email varchar(255) NOT NULL,
+                    Password varchar(255) NOT NULL,
+                    CONSTRAINT ukadmin UNIQUE KEY(ID, Email))
+
+
+Admin UserName : Admin
+
+Password : admin*123
+
+
+
+<-------------Onlinespeedyloan------------------>
+
+I) Apply Online:
+
+
+CREATE TABLE ApplyNow (CaseID int(6) ZEROFILL AUTO_INCREMENT NOT NULL,
+                       Name varchar(255) NOT NULL, PhoneNumber varchar(20) NOT NULL,
+                       Email varchar(255) NOT NULL, LoanAmount varchar(255) NOT NULL,
+                       AppliedDate DATE DEFAULT (CURRENT_DATE),
+                       AuthorizationCode varchar(255), Status varchar(255) DEFAULT 'Pending',
+                       CONSTRAINT uk UNIQUE KEY(CaseID, PhoneNumber));
+
+
+ALTER TABLE ApplyNow ADD PRIMARY KEY (CaseID);
+
+II) Authorization Table:
+
+CREATE TABLE AuthorizationCodes (CodeID int AUTO_INCREMENT NOT NULL,
+                            AuthorizationCode varchar(255) NOT NULL,
+                           CONSTRAINT pkauth PRIMARY KEY(CodeID)) 
+
+
+III) Third Party Websites
+
+
+CREATE TABLE ThirdPartyWebsites( UrlID int NOT NULL AUTO_INCREMENT,
+                                  WebUrl varchar(255) NOT NULL,
+                                  
+                                  UrlImage varchar(255) NOT NULL, 
+                                  
+                                  Status varchar(255) NOT NULL,  PRIMARY KEY(UrlID));
