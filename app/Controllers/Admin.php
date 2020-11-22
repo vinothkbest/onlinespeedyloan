@@ -212,11 +212,12 @@ class Admin extends BaseController{
 
 				'weburl' => 'required',
 				'status' => 'required',
-				 
+				'image' => 'Uploaded[image]|is_image[image]'			 
+				
 				]);
 
 
-			$this->ThirdPartyWebsitesModel =	new ThirdPartyWebsitesModel();
+			$this->ThirdPartyWebsitesModel = new ThirdPartyWebsitesModel();
 
 
 			if($this->validation->withRequest($this->request)->run()) :
@@ -224,21 +225,21 @@ class Admin extends BaseController{
 				$websites['WebUrl'] = $this->request->getPost('weburl');
 				$websites['Status'] = $this->request->getPost('status');
 				
-				$image = $this->request->getFile('image');
+				$websites['UrlImage'] = $this->request->getFile('image');
 
-            	$image->move(WRITEPATH . '/admin/ThirdPartyWebsites');
-    
-	            $data = [
-		               'name' =>  $image->getName(),
-		               'type'  => $image->getClientMimeType()
-	            ];
-    
+				if($websites['UrlImage']->isValid() && !$websites['UrlImage']->hasMoved()) :
 
-				$passer = [
+				//moving into server
+					$websites['UrlImage']->move(base_url('thirdpartywebsites'),
+												$websites['UrlImage']->getName());
 
-						'websites' =>  $websites['UrlImage'],
+					$passer = [
+
+						'websites' => $this->ThirdPartyWebsitesModel->websitesinsertion($websites),
 						'title' => $title,
-				];
+					];
+
+				endif;
 
 			else : 
 
@@ -246,6 +247,7 @@ class Admin extends BaseController{
 
 						'websites' =>  $this->ThirdPartyWebsitesModel->websitetable(),
 						'title' => $title,
+
 				];
 
 			endif;
