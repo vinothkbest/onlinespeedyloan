@@ -63,6 +63,7 @@ class Admin extends BaseController{
 				if(password_verify($data['Password'], $password)) :
 
 					echo 'Verified';
+				else : echo 'Credentials are not matched!';
 
 				endif;
 
