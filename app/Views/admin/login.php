@@ -8,7 +8,7 @@
 
 <link rel="icon" href="assets/images/usafav.ico">
 
-<title><?= 'Admin ' . $title ?></title>
+<title><?= 'Admin'?></title>
 
 <!-- Google-Fonts -->
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600,700,900,400italic'
@@ -75,8 +75,8 @@
 
 <div class="wrapper-page animated fadeInDown">
     <div class="panel panel-color panel-primary">
-        <div class="panel-heading"> 
-           <h3 class="text-center m-t-10"> <strong>Admin</strong> </h3>
+        <div class="panel-heading"  style="color:white; text-align: center;"> 
+          <img style="filter: brightness(0) invert(1)" src="<?=  base_url('assets/images/osl.png'); ?>" width="150px" height="30px">
         </div> 
         <br>
         <div class="indicator"></div>
