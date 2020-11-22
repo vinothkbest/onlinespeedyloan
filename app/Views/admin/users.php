@@ -2,52 +2,55 @@
 <?= $this->section('content') ?>
 
 <div>
-	<div class="table">
-		<table id = "userstable" class="table table-striped table-responsive-sm">
-			<thead>
-				<tr>
-					<th>Case ID</th>
-					<th>Name</th>
-					<th>Phone Number</th>
-					<th>Email ID</th>
-					<th>Loan Amount</th>
-					<th>Applied Date</th>
-					<th>Authorization Code</th>
-					<th>Status</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-			<?php 
-			if(isset($userslist)) :
-				foreach ($userslist as $key => $user) {?>
+	<div class="table" style="overflow: scroll;">
+		<?php if(isset($userslist)) : ?>
+			<table id = "userstable" class="table table-striped table-responsive-sm">
+				<thead>
+					<tr>
+						<th>Case ID</th>
+						<th>Name</th>
+						<th>Phone Number</th>
+						<th>Email ID</th>
+						<th>Loan Amount</th>
+						<th>Applied Date</th>
+						<th>Authorization Code</th>
+						<th>Status</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php foreach ($userslist as $key => $user) :?>
 
-				<tr>
-					<th><?= $user['CaseID'] ?></th>
-					<td><?= $user['Name']; ?></td>
-					<td><?= $user['PhoneNumber']; ?></td>
-					<td><?= $user['Email']; ?></td>
-					<td><?= $user['LoanAmount']; ?></td>
-					<td><?= $user['AppliedDate']; ?></td>
-					<td><?= $user['AuthorizationCode']; ?></td>
-					<td><?= $user['Status']; ?></td>
-					<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<?= $user['CaseID'] ?>">
-							<i class="fa fa-edit"></i>
-						</button>
-					</td>
-				</tr>
-					
-			<?php 	} 
-			else : ?> 
-
-				<h3>No Records to be Found</h3>
-
-			<?php endif; 
-
-			?>
-				
-			</tbody>
-		</table>
+					<tr>
+						<th><?= $user['CaseID'] ?></th>
+						<td><?= $user['Name']; ?></td>
+						<td><?= $user['PhoneNumber']; ?></td>
+						<td><?= $user['Email']; ?></td>
+						<td><?= $user['LoanAmount']; ?></td>
+						<td><?= $user['AppliedDate']; ?></td>
+						<td><?= $user['AuthorizationCode']; ?></td>
+						<td class="status"><?= $user['Status']; ?></td>
+						<td>
+						<?php if ($user['Status'] == "Approved" && isset($user['AuthorizationCode'])): ?>
+							<button type="button" style="background: #315ea2" class="btn btn-info" data-toggle="modal" data-target="#<?= $user['CaseID'] ?>" disabled>
+								<i class="fa fa-edit"></i>
+							</button>
+						<?php else : ?>
+							<button type="button" style="background: #315ea2" class="btn btn-info" data-toggle="modal" data-target="#<?= $user['CaseID'] ?>">
+								<i class="fa fa-edit"></i>
+							</button>
+						<?php endif ?>
+							<button type="button" style="background: red" class="btn btn-info" data-toggle="modal" data-target="#<?= $user['CaseID'] ?>">
+								<i class="glyphicon glyphicon-trash"></i>
+							</button>
+					</tr>
+						
+				<?php endforeach;?> 
+				</tbody>
+			</table>
+		<?php else : ?>
+			<h4 style="text-align: center;">No Records Found</h4>
+		<?php endif; ?>	
 	</div>
 </div>
 
@@ -115,15 +118,6 @@
 </div>
 	
 <?php endforeach; ?>
-
-<script type="text/javascript">
-	
-	$('.')
-
-</script>
-
-
-
 
 <?= $this->endSection() ?>
 
