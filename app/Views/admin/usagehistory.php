@@ -27,7 +27,7 @@
                             
             <?php endforeach; else : ?> 
 
-                        <h3>No Records to be Found</h3>
+                        <h4 style="text-align: center;">No Records to be Found</h4>
 
             <?php endif; ?>
                         
