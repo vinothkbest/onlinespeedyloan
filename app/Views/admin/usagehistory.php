@@ -4,7 +4,7 @@
 
 <div class="usages-panel">
      <div class="col-md-12" style="margin-top: 50px;">
-             <?php if(isset($auhorizedcodedetails)) : ?>   
+             <?php if($auhorizedcodedetails !== 'No Code') : ?>   
 
                 <table id = "userstable" class="table table-striped table-responsive-sm">
                     <thead>
@@ -25,14 +25,15 @@
                             <td><?= $auhorizedcodede->CodeUsage; ?></td>                 
                         </tr>
                             
-            <?php endforeach; else : ?> 
-
-                        <h4 style="text-align: center;">No Records to be Found</h4>
-
-            <?php endif; ?>
+            <?php endforeach; ?>
                         
                     </tbody>
                 </table>
+         <?php   else : ?> 
+
+             <h4 style="text-align: center;">No Records to be Found</h4>
+
+            <?php endif; ?>
     </div>
 
 </div>
