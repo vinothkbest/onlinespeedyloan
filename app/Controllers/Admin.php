@@ -63,7 +63,8 @@ class Admin extends BaseController{
 				if(password_verify($data['Password'], $password)) :
 
 					echo 'Verified';
-				else : echo 'Credentials are not matched!';
+
+				else : echo "Credentials not matched!";
 
 				endif;
 
@@ -226,13 +227,15 @@ class Admin extends BaseController{
 				$websites['WebUrl'] = $this->request->getPost('weburl');
 				$websites['Status'] = $this->request->getPost('status');
 				
-				$websites['UrlImage'] = $this->request->getFile('image');
+				$file = $this->request->getFile('image');
+				$websites['UrlImage'] = $file->getName();
 
-				if($websites['UrlImage']->isValid() && !$websites['UrlImage']->hasMoved()) :
+				if($file->isValid() && !$file->hasMoved()) :
 
 				//moving into server
-					$websites['UrlImage']->move(base_url('thirdpartywebsites'),
-												$websites['UrlImage']->getName());
+
+					$file->move('thirdpartywebsites',
+												$file->getName());
 
 					$passer = [
 
