@@ -101,16 +101,22 @@
                         class="nav-label">Dashboard</span></a>
             </li>
             <li class="has-submenu "><a href="<?= base_url('crm-admin/authorizecodelist'); ?>"><i class="fa fa-archive"></i> <span
-                        class="nav-label">​Authorize Code List</span></a>
-                        </li>
+                        class="nav-label">​Authorize Codes</span></a>
+               <ul type="none">
+                    <li class="has-submenu "><a href="<?= base_url('crm-admin/authorizecodelist'); ?>"><i class="fa fa-archive"></i> <span
+                        class="nav-label">​Added Codes</span></a>
+                    </li>
+                    <li class="has-submenu "><a href="<?= base_url('crm-admin/usagehistory'); ?>"><i class="fa fa-history"></i> <span
+                        class="nav-label">Usage History</span></a>
+                    </li>
+               </ul>
+            </li>
+            
             <li class="has-submenu "><a href="<?= base_url('crm-admin/users'); ?>"><i class="fa fa-users"></i> <span
                         class="nav-label">​Users</span></a>
                         </li>
             <li class="has-submenu "><a href="<?= base_url('crm-admin/thirdpartywebsites') ?>"><i class="fa fa-th"></i> <span
                         class="nav-label">Third Party Websites</span></a>
-            </li>
-            <li class="has-submenu "><a href="<?= base_url('crm-admin/usagehistory'); ?>"><i class="fa fa-history"></i> <span
-                        class="nav-label">Authorised Code Usage</span></a>
             </li>
 
         </ul>
@@ -130,18 +136,13 @@
 
             <img src="<?=  base_url('assets/img2/osl.png'); ?>" width="250px" height="40px">
 
-            <button type="button" class="navbar-toggle pull-left">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            
 
             <ul class="list-inline navbar-right top-menu top-right-menu">
 
             <li class="dropdown text-center">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <img alt="" src="<?= base_url('assets/images/usafav.ico') ?>" class="img-circle profile-img thumb-sm">
+                    <img alt="" src="<?= base_url('assets/images/callrep.png') ?>" class="img-circle profile-img thumb-sm">
                     <span class="username"></span> <span class="caret"></span>
                 </a>
                     <ul class="dropdown-menu extended pro-menu fadeInUp animated" tabindex="5003"
@@ -158,13 +159,6 @@
 
         </div>
 
-        
-
-
-
-
-       
-
     </header>
     <!-- Header Ends -->
 
@@ -172,7 +166,7 @@
     <!-- Page Content Start -->
     <!-- ================== -->
 <div class="title-bar">
-    <div style="margin: 0 0 50px 0; width: 100%; height: 100px; display: flex; justify-content: center; align-items: center; background: #315ea2; color: white">
+    <div style="margin: 0 0 50px 0; width: 100%; height: 100px; display: flex; justify-content: center; align-items: center;">
             <h3 style="text-align: center;font-weight: bold;"><?= ucwords($title) ?></h3>
     </div> 
 </div>  
@@ -222,7 +216,6 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="<?= base_url('admin/js/jquery.tabledit.min.js')?>"></script>
-<script type="text/javascript" src="https://www.jsdelivr.com/package/npm/chart.js"></script>
 </body>
 </html>
 
@@ -240,5 +233,18 @@
 
     } );
 </script>
+<style type="text/css">
+    
+    th, td {
+            white-space: nowrap;
+        }
+</style>
+<!-- //disable Edit Button -->
+
+
+
+
+
+
 <!-- Reports -->
 
