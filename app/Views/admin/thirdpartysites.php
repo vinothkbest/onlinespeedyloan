@@ -4,7 +4,7 @@
 
 <div class="container form-panel">
 
-    <div class="col-md-11">
+    <div class="col-md-8">
         <form 
           action=""
           method= "post"
@@ -21,16 +21,6 @@
           </div>
           <div class="form-group">
              <input type="file" class="form-control" name="image" required>
-          </div>
-          <div class="form-group">
-              <select 
-                class="form-control"
-                name="status"
-                style="width:250px"
-                required>
-                <option>Inactive</option>
-                <option>Active</option>
-              </select>
           </div>
           <div class="form-group">
               <button type="submit" class="btn btn-primary">Add Websites</button>
@@ -59,13 +49,13 @@
                   <tr>
                       <th><?= $key+1 ?></th>
                       <td><?= $website['WebUrl']; ?></td>
-                      <td><img src="<?= base_url('thirdpartywebsites') . '/' . $website['UrlImage'] ?>"></td>
+                      <td><img height="50px" width= "50px" src="<?= base_url('thirdpartywebsites') .'/'. $website['UrlImage']?>"></td>
                       <td class="status"><?= $website['Status']; ?></td>
                       <td>
-                        <button type="button" style="background: #315ea2" class="btn btn-info" data-toggle="modal" data-target="#<?= $website['CaseID'] ?>" disabled>
+                        <button type="button" style="background: #315ea2" class="btn btn-info" data-toggle="modal" data-target="#<?= $website['UrlID'] ?>">
                           <i class="fa fa-edit"></i>
                         </button>
-                        <button type="button" style="background: red" class="btn btn-info" data-toggle="modal" data-target="#<?= $website['CaseID'] ?>">
+                        <button type="button" style="background: red" class="btn btn-info" data-toggle="modal" data-target="#<?= $website['UrlID'] ?>">
                           <i class="glyphicon glyphicon-trash"></i>
                         </button>
                   </tr>
@@ -82,7 +72,7 @@
 <style type="text/css">
   form{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 </style>
 
